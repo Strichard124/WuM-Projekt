@@ -1,8 +1,8 @@
 // Funktion, um die Suche auszuführen
-async function searchPodcast(title) {
+async function searchPodcast() {
 
     // URL für die Suche auf fyyd API
-    const apiUrl = `https://api.fyyd.de/search/podcast?q=${encodeURIComponent(title)}`;
+    const apiUrl = `https://api.fyyd.de/0.2/search/podcast/?title=${encodeURIComponent(document.getElementById("search"))}`;
     const statusElement = document.getElementById('statusText');
 
     statusElement.textContent = 'Suche läuft ...'; // Anzeige während der Suche
