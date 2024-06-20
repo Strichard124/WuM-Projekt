@@ -41,16 +41,34 @@
     <header class="content header">
         <h2 class="title">Start</h2>
         <div class="search-container">
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Suche nach Podcast...">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
+            <div class="container">
+                <input type="text" id="search-title" placeholder="Suche nach Podcast Titel...">
+                <button onclick="searchPodcasts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="btn-option">
+                <button><i class="fa-solid fa-question"></i></button>
+            </div>
+            <div class="btn-gear">
+                <button><i class="fa-solid fa-gear"></i></button>
+            </div>
         </div>
     </header>
 
-    <section class="main content">
-        <h2 class="title">Podcasts</h2>
-        <div id="searchResults"></div>
+     <section class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>LISTEN TO YOUR FAVORITE PODCAST</h1>
+                <h2>QUICK, SIMPLE, CONVENIENT</h2>
+                <p>Looking for something specefic ? </p>
+                <button class="main__btn"><a href="Categories.html">Get Started</a></button>
+            </div>
+            <div class="main__img--container">
+                <img src="homepage-background.jpg" alt="hompage-background" id="main__img">
+            </div>
+            
+        </div>
+        <div id="status-message"></div>
+        <div id="podcast-list"></div>
     </section>
 
     <!--FOOTER -->
@@ -92,54 +110,7 @@
                 navbar.className = "navbar";
             }
         }
-        document.getElementById('searchForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting
-
-            let searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
-            if (searchTerm.length > 0) {
-                // Hier sollte der Backend-Aufruf erfolgen, um die Suchergebnisse zu erhalten
-                // Beispiel: fetchSearchResults(searchTerm);
-                fetchSearchResults(searchTerm); // Beispielhaft die Ergebnisse anzeigen
-            } else {
-                alert('Bitte geben Sie einen Suchbegriff ein.');
-            }
-        });
-
-        // Beispielhafte Funktion zur Anzeige der Suchergebnisse
-        function fetchSearchResults(searchTerm) {
-            // Hier müssten Sie den Backend-Aufruf durchführen, um die Suchergebnisse zu erhalten
-            // Beispielhaft: Simulierte Suchergebnisse
-            let fakeData = [
-                { title: 'Podcast 1', description: 'Lorem ipsum dolor sit amet' },
-                { title: 'Podcast 2', description: 'Consectetur adipiscing elit' },
-                { title: 'Podcast 3', description: 'Sed do eiusmod tempor incididunt' }
-            ];
-
-            // Nur Podcasts filtern, die genau der Suchanfrage entsprechen
-            let filteredResults = fakeData.filter(podcast => {
-                return podcast.title.toLowerCase() === searchTerm;
-            });
-
-            displaySearchResults(filteredResults);
-        }
-
-        function displaySearchResults(results) {
-            let searchResults = document.getElementById('searchResults');
-            searchResults.innerHTML = ''; // Clear previous results
-
-            if (results.length === 0) {
-                searchResults.innerHTML = '<p>Keine Ergebnisse gefunden.</p>';
-                return;
-            }
-
-            let resultsHTML = '<ul>';
-            results.forEach(podcast => {
-                resultsHTML += `<li><strong>${podcast.title}</strong>: ${podcast.description}</li>`;
-            });
-            resultsHTML += '</ul>';
-
-            searchResults.innerHTML = resultsHTML;
-        }
     </script>
+
 </body>
 </html>

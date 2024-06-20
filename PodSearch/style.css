@@ -71,40 +71,38 @@ body {
     font-weight: 600;
 }
 
-/* Search container */
+/* search container */
 .search-container {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
-.search-container form {
+.search-container .container {
+    flex-grow: 1;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.search-container input[type="text"] {
-    width: 250px;
+.search-container input {
+    width: 100%;
     padding: 10px;
-    padding-right: 35px;
+    font-size: 16px;
     border-radius: 5px;
-    border: 0;
+    border: none;
     outline: none;
-    font-size: 1rem;
 }
 
-.search-container button {
-    background: crimson;
-    padding: 10px 15px;
-    border: 0;
-    border-radius: 0 5px 5px 0;
-    color: #fff;
-    cursor: pointer;
+.search-container .btn-option,
+.search-container .btn-gear {
+    margin-left: 10px;
 }
 
-.search-container button:hover {
-    background-color: darkred;
-}
+
 
 /* Responsive navbar */
 .burger-menu {
@@ -187,6 +185,46 @@ body {
         .search-container .container button:hover {
             background-color: darkred
         }
+/*Podcast search */
+
+
+.image-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-container > img {
+    width: 200px;
+}
+
+#error-message {
+    color: red;
+    margin: 10px;
+}
+
+#podcast-search {
+    margin: 10px;
+} 
+
+#podcast-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#podcast-list > div {
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+#podcast-list div {
+    padding: 10px;
+}
 /* option and ? buttons */
 
         .btn-option,
@@ -211,6 +249,171 @@ body {
         .btn-gear:hover * {
             background-color: rgb(138, 136, 136);
         }
+
+/* Main Hero Section */
+.main {
+    background-image: url('Assets/homepage-background.jpg');
+    background-size: cover; /* Bildgröße anpassen */
+    background-position: center; /* Bild zentrieren */
+    background-repeat: no-repeat; /* Bild nicht wiederholen */
+    height: 100vh; /* Volle Höhe für den Hintergrund */
+    width: 100vw; /* Volle Breite für den Hintergrund */
+    position: relative; /* Damit andere Inhalte korrekt platziert werden können */
+}
+
+.main__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-self: center;
+    margin: 0 auto;
+    height: 90vh;
+    background-color: #e45603;
+    z-index: 1;
+    width:100%;
+    max-width: 1300px;
+    padding: 0 50px;
+}
+
+.main__content h1{
+    font-size: 4rem;
+    background-color:rgb(223, 65, 7); 
+    background-image: linear-gradient(to top, #090088 0%, #6598af 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.main__content h2{
+    font-size: 4rem;
+    background-color:rgb(223, 65, 7); 
+    background-image: linear-gradient(to top, #3024da 0%, #8bc7e2 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.main__content p {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.main__btn {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, darkred 0%, rgb(207, 72, 10) 100%);
+    padding: 14px 32px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-top: 2rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.35s;
+    outline: none;
+}
+
+.main__btn a{
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.main__btn:after {
+    position: absolute;
+    content: ''; /* empty String, um keine überlappung zu haben */
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #3024da;
+    transition: all 0.35s;
+    border-radius: 4px;
+}
+
+.main__btn:hover{
+    color: #fff;
+}
+
+.main__btn:hover:after {
+    width: 100%;
+}
+
+.main__img--container {
+    text-align: center;
+}
+
+#main__img{
+    height: 80%;
+    width: 80%;    
+}
+
+
+
+/* Resposive Hero section*/
+@media screen and (max-width: 768px) {
+    .main__container {
+        display: grid;
+        grid-template-columns: auto;
+        align-items: center;
+        justify-self: center;
+        width: 100%;
+        margin: 0 auto;
+        height: 90vh;
+    }
+    .main__content{
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .main__content h1 {
+        font-size: 2.5rem;
+        margin-top: 2rem;
+    }
+
+    .main__content h2 {
+        font-size: 3rem;
+    }
+
+    .main__content p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__content h1 {
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+
+    .main__content h2 {
+        font-size: 2rem;
+    }
+
+    .main__content p {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .main__btn{
+        padding: 12px 36px;
+        margin: 2.5rem 0;
+    }
+
+}
+
+
+
+
+
 
 /* footer */
         .footer {
