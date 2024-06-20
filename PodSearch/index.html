@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/78c36cf674.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script defer src="main.js"></script>
+    <title>Podsearch</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="head">
+        <div class="Logo">
+            <figure>
+                <img src="fyyd.png" alt="MainLogo">
+            </figure>
+        </div>
+
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            
+                <a href="index.html">Start</a>
+                <a href="Categories.html">Categories</a>
+                <a href="Settings.html">Settings</a>
+                <a href="AboutUs.html">About us</a>
+                <a href="Login.html">Login</a>
+            
+        </nav>
+    </div>
+
+    <header class="content header">
+        <h2 class="title">Start</h2>
+        <div class="search-container">
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="Suche nach Podcast...">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </header>
+
+    <section class="main content">
+        <h2 class="title">Podcasts</h2>
+        <div id="searchResults"></div>
+    </section>
+
+    <!--FOOTER -->
+    <footer class="footer">
+        <div class="group-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="fyyd.png" alt="testlogo">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>ABOUT US</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laudantium?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laudantium?</p>
+            </div>
+            <div class="box">
+                <h2>SOCIAL NETWORKS</h2>
+                <div class="social-net">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="group-2">
+            <small>&copy; 2024 <b>Podsearch</b> - All Rights reserved </small>
+        </div>
+
+    </footer>
+    <script>
+        function toggleMenu() {
+            var navbar = document.getElementById('navbar');
+            if (navbar.className === "navbar") {
+                navbar.className += " responsive";
+            } else {
+                navbar.className = "navbar";
+            }
+        }
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            let searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (searchTerm.length > 0) {
+                // Hier sollte der Backend-Aufruf erfolgen, um die Suchergebnisse zu erhalten
+                // Beispiel: fetchSearchResults(searchTerm);
+                fetchSearchResults(searchTerm); // Beispielhaft die Ergebnisse anzeigen
+            } else {
+                alert('Bitte geben Sie einen Suchbegriff ein.');
+            }
+        });
+
+        // Beispielhafte Funktion zur Anzeige der Suchergebnisse
+        function fetchSearchResults(searchTerm) {
+            // Hier müssten Sie den Backend-Aufruf durchführen, um die Suchergebnisse zu erhalten
+            // Beispielhaft: Simulierte Suchergebnisse
+            let fakeData = [
+                { title: 'Podcast 1', description: 'Lorem ipsum dolor sit amet' },
+                { title: 'Podcast 2', description: 'Consectetur adipiscing elit' },
+                { title: 'Podcast 3', description: 'Sed do eiusmod tempor incididunt' }
+            ];
+
+            // Nur Podcasts filtern, die genau der Suchanfrage entsprechen
+            let filteredResults = fakeData.filter(podcast => {
+                return podcast.title.toLowerCase() === searchTerm;
+            });
+
+            displaySearchResults(filteredResults);
+        }
+
+        function displaySearchResults(results) {
+            let searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = ''; // Clear previous results
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p>Keine Ergebnisse gefunden.</p>';
+                return;
+            }
+
+            let resultsHTML = '<ul>';
+            results.forEach(podcast => {
+                resultsHTML += `<li><strong>${podcast.title}</strong>: ${podcast.description}</li>`;
+            });
+            resultsHTML += '</ul>';
+
+            searchResults.innerHTML = resultsHTML;
+        }
+    </script>
+</body>
+</html>

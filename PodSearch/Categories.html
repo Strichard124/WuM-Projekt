@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/78c36cf674.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+
+    <title>Podsearch</title>
+</head>
+
+<body>
+    <!--MAIN PAGE -->
+    <div class="head">
+        <div class="Logo">
+            <figure>
+                <img src="fyyd.png" alt="MainLogo">
+            </figure>
+        </div>
+
+        <nav class="navbar"> 
+            <a href="index.html">Start</a>
+            <a href="categories.html">Categories</a>
+            <a href="settings.html">Settings</a>
+            <a href="AboutUs.html">About us</a> 
+            <a href="Login.html">Login</a>
+        </nav>
+    </div>
+<!--CATEGORIES-->
+    <header class="content header">
+        <h2 class="title">Categories</h2>
+        <div class="search-container">
+            <div class="container">
+                <label for="search-term">Search podcast in categories:</label>
+                <input type="text" id="search-term" placeholder="Suche...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+<!--Filters -->
+        <div class="filters-container">
+            <div class="filter">
+                <label for="quality">IDK:</label>
+                <select id="quality">
+                    <option value="all">All</option>
+                    <!-- Additional options -->
+                </select>
+            </div>
+            <div class="filter">
+                <label for="genre">Genre:</label>
+                <select id="genre">
+                    <option value="all">All</option>
+                    <!-- Additional options  -->
+                </select>
+            </div>
+            <div class="filter">
+                <label for="rating">Rating:</label>
+                <select id="rating">
+                    <option value="all">All</option>
+                    <!-- Additional options  -->
+                </select>
+            </div>
+            <div class="filter">
+                <label for="year">Year:</label>
+                <select id="year">
+                    <option value="all">All</option>
+                    <!-- Additional options  -->
+                </select>
+            </div>
+            <div class="filter">
+                <label for="language">Language:</label>
+                <select id="language">
+                    <option value="all">All</option>
+                    <!-- Additional options  -->
+                </select>
+            </div>
+            <div class="filter">
+                <label for="sort-by">sort by:</label>
+                <select id="sort-by">
+                    <option value="recent">Recent</option>
+                    <!-- Additional options  -->
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!--FOOTER -->
+    <footer class="footer">
+        <div class="group-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="fyyd.png" alt="testlogo">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>ABOUT US</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laudantium?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laudantium?</p>
+            </div>
+            <div class="box">
+                <h2>SOCIAL NETWORKS</h2>
+                <div class="social-net">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="group-2">
+            <small>&copy; 2024 <b>Podsearch</b> - All Rights reserved </small>
+        </div>
+    </footer>
+</body>
+</html>
