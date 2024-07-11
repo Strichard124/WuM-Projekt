@@ -1,3 +1,4 @@
+// Theme Switching
 const btnSwitch = document.querySelector('#switch');
 
 // Load the theme from localStorage
@@ -20,6 +21,7 @@ btnSwitch.addEventListener('click', () => {
     }
 });
 
+// Clone Image Function (not used in HTML, assuming for future use)
 function cloneImage(event) {
     const clickedImage = event.target;
     const clonedImage = clickedImage.cloneNode(true);
@@ -27,82 +29,63 @@ function cloneImage(event) {
     clickedImage.parentNode.appendChild(clonedImage);
 }
 
+// Search Podcasts Function
 function searchPodcasts() {
+    const searchTitle = document.getElementById('search-title').value.trim();
 
-    const searchTitle = document.getElementById('search-title').value;
+    if (searchTitle === '') {
+        document.getElementById('status-message').textContent = "Bitte geben Sie einen Suchbegriff ein.";
+        return;
+    }
 
-    document.getElementById('status-message').textContent = "";
-
-    const resultsDiv = document.getElementById('podcast-list');
-    resultsDiv.innerHTML = '<p>Suche läuft...</p>';
+    document.getElementById('status-message').textContent = "Suche läuft...";
 
     fetchPodcasts(searchTitle);
 }
 
+// Fetch Podcasts from API
 async function fetchPodcasts(title) {
-    let url = new URL('https://api.fyyd.de/0.2/search/podcast/');
+    const url = new URL('https://api.fyyd.de/0.2/search/podcast/');
     url.searchParams.append('title', title);
-
-    console.log('URL:', url.href);
 
     try {
         const response = await fetch(url);
-
-        document.getElementById('status-message').textContent = response.status + ': ' + response.statusText;
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
 
         const data = await response.json();
-
         insertSearchResults(data);
     }
     catch(error) {
-        // Handle the error
+        console.error('Fetch error:', error);
+        document.getElementById('status-message').textContent = "Fehler beim Laden der Daten.";
     }
-
 }
 
+// Insert Search Results into HTML
 function insertSearchResults(data) {
     const resultsDiv = document.getElementById('podcast-list');
     resultsDiv.innerHTML = '';
 
-    //data.data.forEach(podcast => {
-    for (let podcast of data.data) {
+    data.data.forEach(podcast => {
         const podcastDiv = document.createElement('div');
-        const titleDiv = document.createElement('h2');
+        const titleDiv = document.createElement('h3');
         const descriptionDiv = document.createElement('p');
         const podcastImage = document.createElement('img');
         const podcastLink = document.createElement('a');
+
         titleDiv.textContent = podcast.title;
         descriptionDiv.textContent = podcast.description;
-        podcastImage.src = podcast.layoutImageURL;
-        podcastDiv.appendChild(titleDiv);
-        podcastDiv.appendChild(podcastImage);
-        podcastDiv.appendChild(descriptionDiv);
+        podcastImage.src = podcast.image;
+        podcastLink.href = podcast.url;
+        podcastLink.textContent = "Zum Podcast";
 
-        if (podcast.htmlURL) {
-            podcastLink.href = podcast.htmlURL;
-            podcastLink.textContent = "Zum Podcast";
-            podcastDiv.appendChild(podcastLink);
-        }
+        podcastDiv.appendChild(titleDiv);
+        podcastDiv.appendChild(descriptionDiv);
+        podcastDiv.appendChild(podcastImage);
+        podcastDiv.appendChild(podcastLink);
 
         resultsDiv.appendChild(podcastDiv);
-    };
+    });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/* first try (only work with 1 page xd)
-const btnSwitch = document.querySelector('#switch');
-btnSwitch.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    btnSwitch.classList.toggle('active');
-
-});*/

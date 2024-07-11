@@ -6,102 +6,86 @@
     <script src="https://kit.fontawesome.com/78c36cf674.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script defer src="main.js"></script>
-
-    <title>Podsearch</title>
+    <title>Podsearch - Categories</title>
 </head>
-
 <body>
-    <!--MAIN PAGE -->
+    <!-- Navbar -->
     <div class="head">
         <div class="Logo">
             <figure>
-                <img src="fyyd.png" alt="MainLogo">
+                <a href="index.html">
+                    <img src="Assets/Logo.png" alt="Podsearch Logo">
+                </a>
             </figure>
         </div>
-
-        <nav class="navbar"> 
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="navbar" id="navbar">
             <a href="index.html">Start</a>
             <a href="categories.html">Categories</a>
             <a href="settings.html">Settings</a>
-            <a href="AboutUs.html">About us</a> 
-            <a href="Login.html">Login</a>
+            <a href="aboutUs.html">About us</a>
+            <a href="login.html">Login</a>
         </nav>
     </div>
-<!--CATEGORIES-->
-    <header class="content header">
-        <h2 class="title">Categories</h2>
-        <div class="search-container">
-            <div class="container">
-                <label for="search-term">Search podcast in categories:</label>
-                <input type="text" id="search-term" placeholder="Suche...">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-        </div>
-<!--Filters -->
-        <div class="filters-container">
-            <div class="filter">
-                <label for="quality">IDK:</label>
-                <select id="quality">
-                    <option value="all">All</option>
-                    <!-- Additional options -->
-                </select>
-            </div>
-            <div class="filter">
-                <label for="genre">Genre:</label>
-                <select id="genre">
-                    <option value="all">All</option>
-                    <!-- Additional options  -->
-                </select>
-            </div>
-            <div class="filter">
-                <label for="rating">Rating:</label>
-                <select id="rating">
-                    <option value="all">All</option>
-                    <!-- Additional options  -->
-                </select>
-            </div>
-            <div class="filter">
-                <label for="year">Year:</label>
-                <select id="year">
-                    <option value="all">All</option>
-                    <!-- Additional options  -->
-                </select>
-            </div>
-            <div class="filter">
-                <label for="language">Language:</label>
-                <select id="language">
-                    <option value="all">All</option>
-                    <!-- Additional options  -->
-                </select>
-            </div>
-            <div class="filter">
-                <label for="sort-by">sort by:</label>
-                <select id="sort-by">
-                    <option value="recent">Recent</option>
-                    <!-- Additional options  -->
-                </select>
-            </div>
-        </div>
-    </header>
 
-    <!--FOOTER -->
+    <!-- Main Content -->
+    <section class="main">
+        <div class="main__container">
+            <div class="search-container">
+                <div id="podcast-search">
+                    <input type="text" id="search-title" placeholder="Suche nach Podcast Titel...">
+                    <button onclick="searchPodcasts()">Suchen</button>
+                </div>
+                <div class="btn-option">
+                    <button><i class="fa-solid fa-question"></i></button>
+                </div>
+                <div class="btn-gear">
+                    <button><i class="fa-solid fa-gear"></i></button>
+                </div>
+            </div>
+            <div id="status-message"></div>
+            <div class="image-container" id="podcast-list">
+                <!-- Example of podcast items -->
+                <div>
+                    <img src="podcast-image1.jpg" alt="Podcast 1">
+                    <h3>Podcast Title 1</h3>
+                    <p>Podcast Description 1</p>
+                </div>
+                <div>
+                    <img src="podcast-image2.jpg" alt="Podcast 2">
+                    <h3>Podcast Title 2</h3>
+                    <p>Podcast Description 2</p>
+                </div>
+                <!-- Add more podcast items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="group-1">
             <div class="box">
                 <figure>
                     <a href="#">
-                        <img src="fyyd.png" alt="testlogo">
+                        <img src="Assets/Logo.png" alt="Podsearch Logo">
                     </a>
                 </figure>
             </div>
             <div class="box">
-                <h2>ABOUT US</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laudantium?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laudantium?</p>
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, laudantium?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, laudantium?</p>
             </div>
             <div class="box">
-                <h2>SOCIAL NETWORKS</h2>
+                <h2>Social Networks</h2>
                 <div class="social-net">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
@@ -111,8 +95,19 @@
             </div>
         </div>
         <div class="group-2">
-            <small>&copy; 2024 <b>Podsearch</b> - All Rights reserved </small>
+            <small>&copy; 2024 <b>Podsearch</b> - All Rights Reserved</small>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            var navbar = document.getElementById('navbar');
+            if (navbar.className === "navbar") {
+                navbar.className += " responsive";
+            } else {
+                navbar.className = "navbar";
+            }
+        }
+    </script>
 </body>
 </html>
